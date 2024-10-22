@@ -1,0 +1,36 @@
+<h1>Employee Data</h1>
+<form [formGroup]="employeeForm">
+    <input type="text" class="form-control w-25 mb-3" formControlName="name" placeholder="Name" name="name">
+    <input type="text" class="form-control w-25 mb-3" formControlName="age" placeholder="Age" name="age">
+    <input type="text" class="form-control w-25 mb-3" formControlName="desig" placeholder="Designation" name="desig">
+    <input type="text" class="form-control w-25 mb-3" formControlName="salary" placeholder="Salary" name="salary">
+    <input type="text" class="form-control w-25 mb-3" formControlName="place" placeholder="Place" name="place">
+    <button class="btn btn-success ms-2" (click)="OnSave()" *ngIf = "!isVisible">Save</button>
+    <button class="btn btn-primary ms-2" (click)="OnUpdate()" *ngIf = "isVisible">update</button>
+    
+</form>
+<table class="mt-3 w-75 shadow table table-bordered" >
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Designation</th>
+            <th>Salary</th>
+            <th>Place</th>
+            <th class="text-center">Action</th>
+        </tr>
+    </thead>
+    <tbody *ngFor="let item of employeeList">
+        <tr>
+            <td>{{item.name}}</td>
+            <td>{{item.age}}</td>
+            <td>{{item.desig}}</td>
+            <td>{{item.salary}}</td>
+            <td>{{item.place}}</td>
+            <td class="text-center">
+                <button class="btn btn-secondary ms-2" (click)="OnEdit(item)">Edit</button>
+                <button class="btn btn-danger ms-2" (click)="OnDelete(item.id)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
